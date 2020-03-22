@@ -4,6 +4,17 @@ provider "aws" {
   region                  = var.region
 }
 
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "CovidZero"
+
+    workspaces {
+      name = var.workspace
+    }
+  }
+}
+
 module "registry" {
   source      = "./modules/registry"
   app_name    = var.app_name

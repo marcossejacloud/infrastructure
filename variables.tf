@@ -112,3 +112,8 @@ variable "db_passwd" {
   description = "database password"
   default     = "covid-passwd"
 }
+
+variable "workspace" {
+  description = "terraform cloud workspace"
+  description = "infrastructure"
+}
