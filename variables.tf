@@ -115,5 +115,5 @@ variable "db_passwd" {
 
 variable "workspace" {
   description = "terraform cloud workspace"
-  description = "infrastructure"
+  default = "infrastructure"
 }
