@@ -10,7 +10,7 @@ terraform {
     organization = "CovidZero"
 
     workspaces {
-      name = var.workspace
+      name = "infrastructure"
     }
   }
 }

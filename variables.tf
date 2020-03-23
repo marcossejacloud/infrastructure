@@ -1,6 +1,6 @@
 variable "region" {
   description = "AWS region to build this infrastructure"
-  default     = "us-west-2"
+  default     = "us-east-2"
 }
 
 variable "github_token" {
@@ -111,9 +111,4 @@ variable "db_username" {
 variable "db_passwd" {
   description = "database password"
   default     = "covid-passwd"
-}
-
-variable "workspace" {
-  description = "terraform cloud workspace"
-  default = "infrastructure"
 }
