@@ -8,7 +8,7 @@ terraform {
     organization = "CovidZero19"
 
     workspaces {
-      name = "infrastructure"
+      prefix = "infrastructure-"
     }
   }
 }
