@@ -10,7 +10,7 @@ variable "github_token" {
 
 variable "app_name" {
   description = "application base unique name"
-  default     = "testex"
+  default     = "covidzero"
 }
 
 variable "app_port" {
@@ -25,7 +25,7 @@ variable "use_ssl" {
 
 variable "environment" {
   description = "Name of an environment (e.g. staging, qa, production)"
-  default     = "paolo"
+  default     = "staging"
 }
 
 variable "repository_owner" {
