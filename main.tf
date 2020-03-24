@@ -5,7 +5,7 @@ provider "aws" {
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "CovidZero"
+    organization = "CovidZero19"
 
     workspaces {
       prefix = "infrastructure-"
