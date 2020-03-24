@@ -6,6 +6,7 @@ on:
 env:
   tf_version: "latest"
   tf_working_dir: "."
+  TF_WORKSPACE: "staging"
 
 jobs:
   ci:
