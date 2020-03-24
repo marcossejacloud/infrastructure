@@ -12,9 +12,9 @@ jobs:
     - name: tf init
       uses: "hashicorp/terraform-github-actions/init@v0.3.6"
       env:
-          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+        TF_CLI_ARGS_init: '-backend-config="token=${{ secrets.TFE_TOKEN }}"'
 
     - name: tf verify
       uses: "hashicorp/terraform-github-actions/validate@v0.3.6"
       env:
-          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+        TF_CLI_ARGS_init: '-backend-config="token=${{ secrets.TFE_TOKEN }}"'
