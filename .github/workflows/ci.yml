@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_CLI_ARGS_init: '-backend-config="token=${{ secrets.TFE_TOKEN }}"'
-      TF_WORKSPACE: "staging"
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 

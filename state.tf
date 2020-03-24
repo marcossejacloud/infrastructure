@@ -5,7 +5,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "covidzero-tfstate"
-    key = "staging/covidzero.tfstate"
+    key    = "staging/covidzero.tfstate"
     region = "us-east-2"
   }
 }

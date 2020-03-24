@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - staging
 
 jobs:
   deploy:
@@ -28,37 +27,15 @@ jobs:
         tf_actions_subcommand: "init"
 
     - name: 'Terraform Plan Staging'
-      if: github.ref == 'refs/heads/staging'
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: 0.12.13
-        tf_actions_subcommand: "plan"
-      env:
-        TF_WORKSPACE: "staging"
-
-    - name: "Terraform Plan Production"
       if: github.ref == 'refs/heads/master'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.12.13
         tf_actions_subcommand: "plan"
-      env:
-        TF_WORKSPACE: "production"
-
+      
     - name: "Terraform Apply Staging"
-      if: github.ref == 'refs/heads/staging'
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: 0.12.13
-        tf_actions_subcommand: "apply"
-      env:
-        TF_WORKSPACE: "staging"
-
-    - name: "Terraform Apply Production"
       if: github.ref == 'refs/heads/master'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.12.13
         tf_actions_subcommand: "apply"
-      env:
-        TF_WORKSPACE: "production"
