@@ -90,9 +90,9 @@ resource "aws_ecs_task_definition" "app" {
     ],
     "environment": [
       {"name": "DB_ENDPOINT" , "value": aws_rds_cluster.default.endpoint  },
-      {"name": "DB_NAME"     , "value": var.db_user },
-      {"name": "DB_USERNAME" , "value": var.db_username },
-      {"name": "DB_PASSWD"   , "value": var.db_passwd }
+      {"name": "DB_NAME"     , "value": "${var.db_user}" },
+      {"name": "DB_USERNAME" , "value": "${var.db_username}" },
+      {"name": "DB_PASSWD"   , "value": "${var.db_passwd}" }
     ],
     "logConfiguration": {
 	    "logDriver": "awslogs",
