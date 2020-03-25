@@ -89,7 +89,7 @@ resource "aws_ecs_task_definition" "app" {
       }
     ],
     "environment": [
-      {"name": "DB_ENDPOINT" , "value": aws_rds_cluster.default.endpoint  },
+      {"name": "DB_ENDPOINT" , "value": "${aws_rds_cluster.default.endpoint}" },
       {"name": "DB_NAME"     , "value": "${var.db_name}" },
       {"name": "DB_USERNAME" , "value": "${var.db_username}" },
       {"name": "DB_PASSWD"   , "value": "${var.db_passwd}" }
@@ -101,8 +101,7 @@ resource "aws_ecs_task_definition" "app" {
 	        "awslogs-region": "${var.region}",
 	        "awslogs-stream-prefix": "${var.app_name}-${var.environment}"
 	    }
-	}
-
+	  }
   }
 ]
 DEFINITION
