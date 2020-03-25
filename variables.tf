@@ -112,3 +112,16 @@ variable "db_passwd" {
   description = "database password"
   default     = "covid-passwd"
 }
+
+variable "jwt_secret_key" {
+  description = "jwt secret key"
+  default     = ""
+}
+
+variable "auth_username" {
+  description = "auth username"
+}
+
+variable "auth_passworkd" {
+  description = "auth_password"
+}

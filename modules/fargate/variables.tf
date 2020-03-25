@@ -87,3 +87,15 @@ variable "db_username" {
 variable "db_passwd" {
   description = "database password"
 }
+
+variable "jwt_secret_key" {
+  description = "jwt secret key"
+}
+
+variable "auth_username" {
+  description = "auth username"
+}
+
+variable "auth_passworkd" {
+  description = "auth_password"
+}
