@@ -10,7 +10,7 @@ variable "github_token" {
 
 variable "app_name" {
   description = "application base unique name"
-  default     = "hummibird-v2"
+  default     = "hummingbird"
 }
 
 variable "app_port" {
