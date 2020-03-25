@@ -122,6 +122,6 @@ variable "auth_username" {
   description = "auth username"
 }
 
-variable "auth_passworkd" {
+variable "auth_password" {
   description = "auth_password"
 }

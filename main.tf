@@ -38,7 +38,7 @@ module "fargate" {
   db_passwd         = var.db_passwd
   jwt_secret_key    = var.jwt_secret_key
   auth_username     = var.auth_username
-  auth_password     = var.password
+  auth_password     = var.auth_password
 }
 
 module "buildndeploy" {
