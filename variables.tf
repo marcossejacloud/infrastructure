@@ -10,7 +10,7 @@ variable "github_token" {
 
 variable "app_name" {
   description = "application base unique name"
-  default     = "covidzero"
+  default     = "hummibird-v2"
 }
 
 variable "app_port" {
