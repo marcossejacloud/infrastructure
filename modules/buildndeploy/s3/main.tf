@@ -28,9 +28,9 @@ resource "aws_codebuild_project" "node_build" {
     packaging = "ZIP"
   }
   environment {
-    compute_type    = "BUILD_GENERAL1_SMALL"
-    image           = "aws/codebuild/nodejs:12"
-    type            = "LINUX_CONTAINER"
+    compute_type = "BUILD_GENERAL1_SMALL"
+    image        = "aws/codebuild/nodejs:12"
+    type         = "LINUX_CONTAINER"
   }
   source {
     type = "CODEPIPELINE"
