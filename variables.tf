@@ -134,3 +134,8 @@ variable "hostname_api_default" {
   description = "If you'd like to an specific hostname for API instead of app_name.domain.com"
   default     = ""
 }
+
+variable "hostname_app_front_default" {
+  description = "If you'd like to an specific hostname for Frntend Application instead of app_name.domain.com"
+  default     = ""
+}
