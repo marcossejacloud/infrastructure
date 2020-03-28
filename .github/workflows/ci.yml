@@ -25,6 +25,7 @@ jobs:
       TF_VAR_hostname_api_default: ${{secrets.HOSTNAME_API_DEFAULT}}
       TF_VAR_hostname_app_front_default: ${{secrets.HOSTNAME_APP_FRONT_DEFAULT}}
       TF_VAR_jwt_secret_key: ${{secrets.JWT_SECRET_KEY}}
+      TF_VAR_repository_branch: "staging"
       TF_VAR_repository_name: "hummingbird-v2"
       TF_VAR_repository_owner: "CovidZero"
 
