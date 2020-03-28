@@ -42,7 +42,7 @@ module "fargate" {
 }
 
 module "buildndeploy" {
-  source            = "./modules/buildndeploy"
+  source            = "./modules/buildndeploy/ecs"
   environment       = var.environment
   region            = var.region
   registry_uri      = module.registry.repository_uri

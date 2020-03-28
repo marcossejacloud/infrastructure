@@ -4,6 +4,18 @@ module "app_front" {
   versioning_enabled = true
 }
 
+
+module "s3_buildndeploy" {
+  source            = "./modules/buildndeploy/s3"
+  bucket_name       = module.app_front.bucket_id
+  environment       = var.environment
+  repository_name   = var.static_repository_name
+  repository_owner  = var.repository_owner
+  repository_branch = var.repository_branch
+  github_token      = var.github_token
+}
+
+
 module "hostname_app_front" {
   source      = "./modules/ns"
   app_name    = var.hostname_app_front_default != "" ? var.hostname_app_front_default : var.app_name
@@ -11,3 +23,4 @@ module "hostname_app_front" {
   base_domain = var.base_domain
   is_proxied  = true
 }
+
