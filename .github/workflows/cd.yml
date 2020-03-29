@@ -37,10 +37,12 @@ jobs:
     - name: "Terraform Init"
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "init"
 
     - name: "Terraform Apply Staging"
       if: github.ref == 'refs/heads/master'
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "apply"
