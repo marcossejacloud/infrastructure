@@ -2,11 +2,6 @@ name: 'Terraform GitHub Actions CI'
 
 on:
   - pull_request
-  
-env:
-  tf_version: "latest"
-  tf_working_dir: "."
-  tf_actions_version: 0.12.23
 
 jobs:
   ci:
@@ -28,6 +23,9 @@ jobs:
       TF_VAR_jwt_secret_key: ${{secrets.JWT_SECRET_KEY}}
       TF_VAR_repository_name: "hummingbird-v2"
       TF_VAR_repository_owner: "CovidZero"
+      TF_VERSION: "latest"
+      TF_WORKING_DIR: "."
+      TF_ACTIONS_VERSION: 0.12.23
 
     steps:
     - name: "Code Checkout"
@@ -36,20 +34,24 @@ jobs:
     - name: "Terraform Check Indent"
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "fmt"
 
     - name: "Terraform Init"
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "init"
 
     - name: "Terraform Validate"
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "validate"
 
     - name: "Terraform Plan"
       uses: hashicorp/terraform-github-actions@master
       with:
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "plan"
     
