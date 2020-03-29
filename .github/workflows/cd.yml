@@ -28,7 +28,7 @@ jobs:
       TF_VAR_repository_owner: "CovidZero"
       TF_VERSION: "latest"
       TF_WORKING_DIR: "."
-      INPUT_TF_ACTIONS_VERSION: 0.12.23
+      TF_ACTIONS_VERSION: 0.12.23
 
     steps:
     - name: "Code Checkout"
