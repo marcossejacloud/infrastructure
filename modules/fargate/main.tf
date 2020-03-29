@@ -59,6 +59,10 @@ resource "aws_ecs_cluster" "main" {
   name = "${var.app_name}-${var.environment}-ecs-cluster"
 }
 
+data "aws_ecs_task_definition" "app" {
+  task_definition = aws_ecs_task_definition.app.family
+}
+
 resource "aws_ecs_task_definition" "app" {
   family                   = "app"
   network_mode             = "awsvpc"
@@ -114,7 +118,7 @@ DEFINITION
 resource "aws_ecs_service" "main" {
   name                               = "${var.app_name}-${var.environment}-ecs-service"
   cluster                            = aws_ecs_cluster.main.id
-  task_definition                    = aws_ecs_task_definition.app.arn
+  task_definition                    = "${aws_ecs_task_definition.app.family}:${max("${aws_ecs_task_definition.app.revision}", "${data.aws_ecs_task_definition.app.revision}")}"
   desired_count                      = var.app_count
   deployment_minimum_healthy_percent = var.deploy_min_t
   deployment_maximum_percent         = var.deploy_max_t
