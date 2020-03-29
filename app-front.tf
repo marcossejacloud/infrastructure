@@ -1,6 +1,6 @@
 module "app_front" {
   source             = "./modules/s3/static-website"
-  name               = "app-staging"
+  name               = "uat"
   base_domain        = var.base_domain
   versioning_enabled = true
   sourceIps = [
@@ -44,7 +44,7 @@ module "app_front" {
 
 module "hostname_app_front" {
   source      = "./modules/ns"
-  app_name    = "app-staging"
+  app_name    = "uat"
   alb_url     = module.app_front.bucket_domain_name
   base_domain = var.base_domain
   is_proxied  = true
