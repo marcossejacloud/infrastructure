@@ -27,6 +27,7 @@ jobs:
       TF_VAR_jwt_secret_key: ${{secrets.JWT_SECRET_KEY}}
       TF_VAR_repository_name: "hummingbird-v2"
       TF_VAR_repository_owner: "CovidZero"
+      TF_ACTIONS_VERSION: 0.12.23
 
     steps:
     - name: "Code Checkout"
@@ -35,7 +36,7 @@ jobs:
     - name: "Terraform Init"
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "init"
         tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
@@ -43,6 +44,6 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "apply"
         tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
