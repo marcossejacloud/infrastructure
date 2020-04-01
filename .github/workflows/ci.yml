@@ -13,20 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      TF_VAR_auth_password: ${{secrets.AUTH_PASSWORD}}
-      TF_VAR_auth_username: ${{secrets.AUTH_USERNAME}}
-      TF_VAR_cloudflare_api_token: ${{secrets.CLOUDFLARE_API_TOKEN}}
-      TF_VAR_db_name: ${{secrets.DB_NAME}}
-      TF_VAR_db_passwd: ${{secrets.DB_PASSWORD}}
-      TF_VAR_db_username:  ${{secrets.DB_USERNAME}}
-      TF_VAR_github_token: ${{secrets.GITHUB_TOKEN_ORG}}
-      TF_VAR_hostname_api_default: ${{secrets.HOSTNAME_API_DEFAULT}}
-      TF_VAR_hostname_app_front_default: ${{secrets.HOSTNAME_APP_FRONT_DEFAULT}}
-      TF_VAR_jwt_secret_key: ${{secrets.JWT_SECRET_KEY}}
-      TF_VAR_repository_name: "hummingbird-v2"
-      TF_VAR_repository_owner: "CovidZero"
+      TF_WORKSPACE: "production"
+      TF_ACTIONS_VERSION: 0.12.23
+
 
     steps:
     - name: "Code Checkout"
@@ -35,24 +24,27 @@ jobs:
     - name: "Terraform Check Indent"
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "fmt"
+        tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
     - name: "Terraform Init"
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "init"
+        tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
     - name: "Terraform Validate"
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "validate"
+        tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
 
     - name: "Terraform Plan"
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: 0.12.21
+        tf_actions_version: ${{ env.TF_ACTIONS_VERSION }}
         tf_actions_subcommand: "plan"
-    
+        tf_actions_cli_credentials_token: ${{secrets.TERRAFORM_API_TOKEN}}
