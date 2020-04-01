@@ -1,6 +1,6 @@
 module "app_front" {
   source             = "./modules/s3/static-website"
-  name               = "uat"
+  name               = var.hostname_app_front_default
   base_domain        = var.base_domain
   versioning_enabled = true
   sourceIps = [
