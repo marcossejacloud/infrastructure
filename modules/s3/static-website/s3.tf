@@ -24,12 +24,17 @@ resource "aws_s3_bucket" "default" {
 data "aws_iam_policy_document" "bucket_sourceip_policy" {
   statement {
     actions = [
-      "s3:GetObject",
+      "s3:GetObject"
     ]
 
     resources = [
-      "arn:aws:s3:::${var.name}.${var.base_domain}/*",
+      "arn:aws:s3:::${var.name}.${var.base_domain}/*"
     ]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
 
     condition {
       test     = "IpAddress"
