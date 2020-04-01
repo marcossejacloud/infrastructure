@@ -44,8 +44,8 @@ module "app_front" {
 
 module "hostname_app_front" {
   source      = "./modules/ns"
-  app_name    = "uat"
-  alb_url     = module.app_front.bucket_domain_name
+  app_name    = var.hostname_app_front_default
+  alb_url     = module.app_front.bucket_website_domain
   base_domain = var.base_domain
   is_proxied  = true
 }

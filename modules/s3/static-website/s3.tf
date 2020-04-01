@@ -1,11 +1,9 @@
 resource "aws_s3_bucket" "default" {
   bucket = "${var.name}.${var.base_domain}"
-  acl    = "public-read"
   policy = data.aws_iam_policy_document.bucket_sourceip_policy.json
 
   website {
     index_document = "index.html"
-    error_document = "error.html"
   }
 
   versioning {
